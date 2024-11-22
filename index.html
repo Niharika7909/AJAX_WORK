@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About</title>
+    <script>
+        function loadinformation() {
+            // Create new XMLHttpRequest object
+            var request = new XMLHttpRequest();
+            
+            // Initialize GET request to "About.html"
+            request.open("GET", "About.html", true);
+            
+            // Set up the onreadystatechange event handler
+            request.onreadystatechange = function() {
+                // Check if request is completed and successful (readyState = 4, status = 200)
+                if (this.readyState === 4 && this.status === 200) {
+                    // Successfully loaded the content of About.html
+                    console.log(this.responseText);  // Log response text (content of About.html)
+                    // Update the page with the content of About.html
+                    document.querySelector('.container').innerHTML = this.responseText;
+                }
+            };
+            
+            // Send the request to the server
+            request.send();
+        }
+    </script>
+</head>
+<body>
+    <h1>Welcome to the home page</h1>
+    <h2>Implementation of AJAX</h2>
+    <h1><a href="About.html">About Page</a></h1>
+    <button onclick="loadinformation()">Load About</button>
+    <!-- Keep class="container" if you prefer class selector -->
+    <div class="container"></div>
+</body>
+</html>
